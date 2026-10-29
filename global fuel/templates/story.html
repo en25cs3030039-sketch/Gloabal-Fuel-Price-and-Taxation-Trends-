@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block title %}Tableau Story - Global Fuel Prices & Taxation Trends{% endblock %}
+
+{% block content %}
+<section class="py-4">
+  <div class="container">
+    <!-- Breadcrumb & Title -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
+      <div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-1 small">
+            <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="breadcrumb-item active text-info" aria-current="page">Tableau Story</li>
+          </ol>
+        </nav>
+        <h1 class="h2 text-white fw-bold mb-1">
+          <i class="bi bi-journal-text text-warning me-2"></i>Tableau Story: Analytical Narrative
+        </h1>
+        <p class="text-muted small mb-0">
+          A sequential data journey highlighting global fuel disparities, taxation burdens, and macroeconomic correlations.
+        </p>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="d-flex gap-2 flex-wrap">
+        <button id="btnReloadViz" class="btn btn-viz-control" title="Reload Story">
+          <i class="bi bi-arrow-clockwise"></i> Reload
+        </button>
+        <button id="btnFullscreen" class="btn btn-viz-control" title="Full Screen View">
+          <i class="bi bi-arrows-fullscreen"></i> Fullscreen
+        </button>
+        <a href="{{ tableau_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-viz-external">
+          <i class="bi bi-box-arrow-up-right"></i> Open on Tableau Public
+        </a>
+      </div>
+    </div>
+
+    <!-- Story Introduction Banner -->
+    <div class="p-4 rounded-4 mb-4" style="background: linear-gradient(135deg, rgba(22, 36, 71, 0.8), rgba(11, 19, 43, 0.9)); border: 1px solid var(--navy-border);">
+      <div class="row align-items-center g-3">
+        <div class="col-lg-8">
+          <span class="badge bg-warning-subtle text-warning border border-warning mb-2">Narrative Exploration</span>
+          <h2 class="h4 text-white fw-bold mb-2">Story Overview &amp; Research Hypothesis</h2>
+          <p class="text-secondary small mb-0">
+            While crude oil is a globally traded commodity priced in US Dollars, consumer prices at the gas pump diverge by more than 1000% between the lowest and highest priced nations. This Tableau Story investigates how sovereign tax policies, national subsidies, and income classifications drive these profound differences.
+          </p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <div class="p-3 rounded text-start" style="background: rgba(255,255,255,0.04); border: 1px solid var(--navy-border);">
+            <div class="small text-muted mb-1">Story Focus:</div>
+            <div class="text-info fw-semibold small"><i class="bi bi-check-circle-fill me-1"></i> Macro Benchmark Comparison</div>
+            <div class="text-info fw-semibold small"><i class="bi bi-check-circle-fill me-1"></i> Tax Policy Archetypes</div>
+            <div class="text-info fw-semibold small"><i class="bi bi-check-circle-fill me-1"></i> Regional Disparities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tableau Story Embed Container -->
+    <div id="tableauWrapper" class="tableau-card mb-5">
+      <div class="tableau-header">
+        <div class="tableau-title-area">
+          <span class="tableau-status-dot"></span>
+          <h3 class="tableau-title">Embedded Tableau Public Story Presentation</h3>
+        </div>
+        <div class="tableau-controls">
+          <span class="badge bg-info-subtle text-info small">
+            <i class="bi bi-collection-play me-1"></i> Interactive Story Points
+          </span>
+          <a href="{{ tableau_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-info">
+            <i class="bi bi-link-45deg"></i> Tableau Public Link
+          </a>
+        </div>
+      </div>
+
+      <!-- Embedded Tableau Story / Viz Component -->
+      <div class="tableau-viewport">
+        <tableau-viz id="tableauViz"
+          src="https://public.tableau.com/views/GLOBALfuelpriceandtaxationtrends/globalfuelpriceandtaxationtrends"
+          toolbar="bottom"
+          hide-tabs="false"
+          width="100%"
+          height="820px">
+        </tableau-viz>
+
+        <!-- Fallback if Web Component isn't supported -->
+        <noscript>
+          <iframe 
+            src="https://public.tableau.com/views/GLOBALfuelpriceandtaxationtrends/globalfuelpriceandtaxationtrends?:embed=y&:showVizHome=no&:tabs=yes&:toolbar=yes&:language=en-US"
+            title="Global Fuel Prices and Taxation Trends Story"
+            width="100%"
+            height="820"
+            style="border: none;"
+            allowfullscreen>
+          </iframe>
+        </noscript>
+      </div>
+
+      <!-- Fallback Notification Banner -->
+      <div class="tableau-fallback-banner">
+        <div>
+          <i class="bi bi-info-circle-fill text-warning me-2"></i>
+          <span>To interact directly with full-screen story tabs and animated transitions:</span>
+        </div>
+        <div>
+          <a href="{{ tableau_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-warning fw-bold">
+            <i class="bi bi-box-arrow-up-right me-1"></i> Open Story in New Tab
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Structured Analytical Story Breakdown -->
+    <div class="section-header">
+      <span class="section-tag">Analytical Narrative Framework</span>
+      <h3 class="section-title">Key Story Chapters &amp; Observation Themes</h3>
+      <p class="section-subtitle">
+        Structured outline of findings derived from the interactive visualization. Actual empirical values are dynamically observed directly in the Tableau viz above.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Chapter 1 -->
+      <div class="col-lg-6">
+        <div class="story-chapter-card">
+          <div class="story-chapter-num">Chapter 01 — Baseline Foundation</div>
+          <h4 class="story-chapter-title">Brent Crude Benchmark &amp; Global Elasticity</h4>
+          <p class="text-muted small mb-3">
+            Examines the underlying raw crude cost benchmark (Brent Crude in USD) as the common input across all national refining systems.
+          </p>
+          <div class="p-3 rounded" style="background: rgba(255,255,255,0.03); border: 1px solid var(--navy-border);">
+            <strong class="text-white d-block small mb-1"><i class="bi bi-lightbulb text-warning me-1"></i> Observation Framework:</strong>
+            <span class="text-secondary small">
+              While global crude shifts affect all nations, domestic price elasticity varies sharply. Deregulated markets exhibit near-instant price adjustments, whereas regulated and subsidized economies suppress pass-through volatility.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 2 -->
+      <div class="col-lg-6">
+        <div class="story-chapter-card">
+          <div class="story-chapter-num">Chapter 02 — Fiscal Policy Regimes</div>
+          <h4 class="story-chapter-title">Tax Percentage vs. Sovereign Subsidies</h4>
+          <p class="text-muted small mb-3">
+            Contrasts nations leveraging heavy fuel taxation for state revenue and decarbonization against nations using fiscal surpluses to subsidize fuel.
+          </p>
+          <div class="p-3 rounded" style="background: rgba(255,255,255,0.03); border: 1px solid var(--navy-border);">
+            <strong class="text-white d-block small mb-1"><i class="bi bi-lightbulb text-warning me-1"></i> Observation Framework:</strong>
+            <span class="text-secondary small">
+              The data reveals a stark bifurcation: high-tax nations (predominantly Western Europe) apply taxes exceeding 50% of the pump price, while major oil-exporting economies maintain negative effective taxation through state subsidies.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 3 -->
+      <div class="col-lg-6">
+        <div class="story-chapter-card">
+          <div class="story-chapter-num">Chapter 03 — Fuel Type Divergence</div>
+          <h4 class="story-chapter-title">Petrol vs. Diesel vs. LPG Dynamics</h4>
+          <p class="text-muted small mb-3">
+            Assesses the divergent pricing formulas and tax treatments applied across gasoline, diesel, and clean residential LPG.
+          </p>
+          <div class="p-3 rounded" style="background: rgba(255,255,255,0.03); border: 1px solid var(--navy-border);">
+            <strong class="text-white d-block small mb-1"><i class="bi bi-lightbulb text-warning me-1"></i> Observation Framework:</strong>
+            <span class="text-secondary small">
+              In numerous developing economies, diesel and LPG receive preferential tax rates or direct consumer subsidies to shield freight transport and household cooking from sudden inflation shocks.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter 4 -->
+      <div class="col-lg-6">
+        <div class="story-chapter-card">
+          <div class="story-chapter-num">Chapter 04 — Economic Classifications</div>
+          <h4 class="story-chapter-title">Income Level &amp; Regional Patterns</h4>
+          <p class="text-muted small mb-3">
+            Analyzes fuel affordability across World Bank income classifications (High, Upper-Middle, Lower-Middle, Low Income).
+          </p>
+          <div class="p-3 rounded" style="background: rgba(255,255,255,0.03); border: 1px solid var(--navy-border);">
+            <strong class="text-white d-block small mb-1"><i class="bi bi-lightbulb text-warning me-1"></i> Observation Framework:</strong>
+            <span class="text-secondary small">
+              High-income nations demonstrate higher absolute fuel prices due to environmental taxation, yet fuel expenditure represents a significantly smaller proportion of average disposable household income compared to lower-middle-income peers.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conclusions Section -->
+    <div class="p-4 rounded-4 mt-4" style="background: var(--navy-card); border: 1px solid var(--navy-border);">
+      <h3 class="h4 text-white fw-bold mb-3">
+        <i class="bi bi-check2-all text-info me-2"></i>Synthesis &amp; Analytical Conclusions
+      </h3>
+      <div class="row g-4 text-secondary small">
+        <div class="col-md-4">
+          <h5 class="text-white h6 fw-bold mb-2">1. Policy Over Commodity Cost</h5>
+          <p class="mb-0 text-muted">
+            The variance in global retail fuel prices is overwhelmingly dictated by national fiscal architecture (taxes and subsidies) rather than crude procurement or refining margins.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-white h6 fw-bold mb-2">2. Fiscal Sustainability Pressures</h5>
+          <p class="mb-0 text-muted">
+            Economies maintaining high subsidy tiers encounter mounting budgetary pressures during periods of elevated Brent crude benchmarks, often prompting subsidy reforms.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-white h6 fw-bold mb-2">3. Energy Transition Implications</h5>
+          <p class="mb-0 text-muted">
+            High taxation on fossil fuels creates a financial incentive accelerating EV and renewable adoption, whereas subsidized pricing dampens the market incentive for fuel efficiency.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}
+

@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Contact &amp; Feedback - Global Fuel Analytics{% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header text-center mx-auto mb-5">
+      <span class="section-tag">Get in Touch</span>
+      <h1 class="section-title">Contact &amp; Project Inquiries</h1>
+      <p class="section-subtitle mx-auto">
+        Have questions regarding the dataset methodology, Tableau Public visualizations, or looking to collaborate on energy analytics? Submit your inquiry below.
+      </p>
+    </div>
+
+    <div class="row g-5">
+      <!-- Contact Form -->
+      <div class="col-lg-7">
+        <div class="p-4 p-md-5 rounded-4" style="background: var(--navy-card); border: 1px solid var(--navy-border);">
+          <h2 class="h4 text-white fw-bold mb-4">Send a Message</h2>
+          <form method="POST" action="{{ url_for('contact') }}">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label-custom">Your Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control form-control-custom" id="name" name="name" placeholder="e.g. John Doe" required>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label-custom">Email Address <span class="text-danger">*</span></label>
+                <input type="email" class="form-control form-control-custom" id="email" name="email" placeholder="name@example.com" required>
+              </div>
+              <div class="col-12">
+                <label for="subject" class="form-label-custom">Subject</label>
+                <input type="text" class="form-control form-control-custom" id="subject" name="subject" placeholder="Project Inquiry / Feedback / Collaboration">
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label-custom">Message <span class="text-danger">*</span></label>
+                <textarea class="form-control form-control-custom" id="message" name="message" rows="5" placeholder="Share your feedback, observations, or inquiries..." required></textarea>
+              </div>
+              <div class="col-12 mt-4">
+                <button type="submit" class="hero-btn-primary w-100 justify-content-center">
+                  <i class="bi bi-send-fill me-2"></i> Submit Inquiry
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Details & Portfolio Integration -->
+      <div class="col-lg-5">
+        <div class="d-flex flex-column gap-4">
+          <!-- SkillWallet / Academic Submission Card -->
+          <div class="p-4 rounded-4" style="background: var(--navy-card); border: 1px solid var(--navy-border);">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="brand-icon" style="background: linear-gradient(135deg, var(--orange-accent), #d97706); width: 44px; height: 44px;">
+                <i class="bi bi-wallet2"></i>
+              </div>
+              <div>
+                <h3 class="h6 text-white fw-bold mb-0">SkillWallet Portfolio Integration</h3>
+                <span class="text-muted small">Project Submission Reference</span>
+              </div>
+            </div>
+            <p class="text-secondary small mb-3">
+              This web application and the integrated Tableau visualization fulfill the requirements for the Data Analytics with Tableau capstone project.
+            </p>
+            <div class="p-2 rounded small font-monospace" style="background: rgba(0,0,0,0.3); border: 1px solid var(--navy-border); color: var(--teal-accent);">
+              Project ID: GLOBAL-FUEL-ANALYTICS-2025
+            </div>
+          </div>
+
+          <!-- Tableau Public Card -->
+          <div class="p-4 rounded-4" style="background: var(--navy-card); border: 1px solid var(--navy-border);">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="brand-icon" style="background: linear-gradient(135deg, #0284c7, #0369a1); width: 44px; height: 44px;">
+                <i class="bi bi-bar-chart-line"></i>
+              </div>
+              <div>
+                <h3 class="h6 text-white fw-bold mb-0">Tableau Public Profile</h3>
+                <span class="text-muted small">Interactive Workbooks</span>
+              </div>
+            </div>
+            <p class="text-secondary small mb-3">
+              Explore the raw published workbook, underlying worksheets, and custom story points directly on Tableau Public.
+            </p>
+            <a href="{{ tableau_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm w-100">
+              <i class="bi bi-box-arrow-up-right me-1"></i> Open Tableau Public Workbook
+            </a>
+          </div>
+
+          <!-- GitHub Repository Card -->
+          <div class="p-4 rounded-4" style="background: var(--navy-card); border: 1px solid var(--navy-border);">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="brand-icon" style="background: linear-gradient(135deg, #475569, #1e293b); width: 44px; height: 44px;">
+                <i class="bi bi-github"></i>
+              </div>
+              <div>
+                <h3 class="h6 text-white fw-bold mb-0">Source Code &amp; Version Control</h3>
+                <span class="text-muted small">GitHub Open Source</span>
+              </div>
+            </div>
+            <p class="text-secondary small mb-3">
+              All Flask routes, Jinja templates, responsive styles, and documentation are tracked under Git version control.
+            </p>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm w-100">
+              <i class="bi bi-github me-1"></i> Visit GitHub Repository
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
