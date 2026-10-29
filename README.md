@@ -11,7 +11,7 @@ Regional Tax Analysis: Explore differences in fuel taxation across regions.
 Interactive Dashboard: Explore visualizations and compare fuel prices and taxes.
 Dashboard Preview
 View My Project:
-[)
+[https://public.tableau.com/app/profile/neha.rathore5573/viz/GLOBALfuelpriceandtaxationtrends/globalfuelpriceandtaxationtrends)
 
 Tools Used
 Tableau Public
